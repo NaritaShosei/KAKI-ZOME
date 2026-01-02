@@ -18,6 +18,7 @@ public class SlotGameController : MonoBehaviour
         if (_isStopped[slot]) return;
 
         _lottery[slot].Stop();
+        _views[slot].UpdateView();
         _lastReel[slot] = _lottery[slot].GetSymbol();
         _isStopped[slot] = true;
 

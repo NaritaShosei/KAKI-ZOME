@@ -18,8 +18,10 @@ public class ResultEffectController : MonoBehaviour
             e.Symbol == result.Symbol &&
             e.ResultType == result.Type);
 
+        Debug.Log(effect.name);
+
         if (effect == null) return;
 
-        Instantiate(effect.EffectPrefab);
+        Instantiate(effect.EffectPrefab, transform);
     }
 }

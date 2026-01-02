@@ -14,21 +14,21 @@ public class Slot
 
     public void Tick(float deltaTime)
     {
-        _position += _speed * deltaTime;
-
-        if (_position >= _reel.Length)
-            _position -= _reel.Length;
+        _position = (_position + _speed * deltaTime) % _reel.Length;
     }
 
 
     public void Stop()
     {
-        _position = Mathf.Ceil(_position);
+        float beforePosition = _position;
+        _position = Mathf.RoundToInt(_position);
+        Debug.Log($"Stop: before={beforePosition:F2}, after={_position:F2}, symbol={GetSymbol()}");
     }
 
     public int GetSymbol()
     {
-        int index = Mathf.FloorToInt(_position) % _reel.Length;
+        int index = Mathf.RoundToInt(_position) % _reel.Length;
+        Debug.Log($"GetSymbol: position={_position:F2}, index={index}, symbol={_reel[index]}");
         return _reel[index];
     }
 
@@ -39,7 +39,7 @@ public class Slot
     {
         int count = _reel.Length;
 
-        int baseIndex = Mathf.FloorToInt(_position);
+        int baseIndex = Mathf.RoundToInt(_position);
 
         int now = baseIndex % count;
         int down = (baseIndex + 1) % count;
