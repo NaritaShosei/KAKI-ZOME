@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "EffectData", menuName = "Data")]
+[CreateAssetMenu(fileName = "EffectData", menuName = "Data/Effect")]
 
 public class EffectData : ScriptableObject
 {

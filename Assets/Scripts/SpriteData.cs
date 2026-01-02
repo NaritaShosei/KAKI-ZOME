@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ReelData", menuName = "Data")]
+[CreateAssetMenu(fileName = "ReelData", menuName = "Data/Reel")]
 public class ReelData : ScriptableObject
 {
     public Sprite GetSprite(int key)
