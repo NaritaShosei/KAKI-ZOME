@@ -23,6 +23,7 @@ public class SlotGameController : MonoBehaviour
 
         if (_isStopped.All(x => x))
         {
+            var result = _judge.Judge(_lastReel);
             OnAllReelStopped?.Invoke(_lastReel);
         }
     }
@@ -31,6 +32,7 @@ public class SlotGameController : MonoBehaviour
     [SerializeField] private ReelView[] _views;
     [SerializeField] private float _speed = 5f;
 
+    private ResultJudge _judge;
     private int[] _lastReel;
     private bool[] _isStopped;
 
@@ -38,6 +40,8 @@ public class SlotGameController : MonoBehaviour
     {
         _lastReel = new int[_lottery.Length];
         _isStopped = new bool[_lottery.Length];
+
+        _judge = new ResultJudge();
 
         for (int i = 0; i < _lottery.Length; i++)
         {
