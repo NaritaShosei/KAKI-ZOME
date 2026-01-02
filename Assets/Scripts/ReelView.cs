@@ -18,31 +18,10 @@ public class ReelView : MonoBehaviour
         Set(_up, reel.up);
         Set(_now, reel.now);
         Set(_down, reel.down);
-        Set(_twoDown, reel.twoDpwn);
-        Set(_twoDownUp, reel.twoDpwn);
+        Set(_twoDown, reel.twoDown);
+        Set(_twoDownUp, reel.twoDown);
 
         float y = -reel.offset * _symbolHeight;
-
-        _twoDownUp.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y - _symbolHeight * 3);
-        _twoUp.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y - _symbolHeight * 2);
-        _up.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y - _symbolHeight);
-        _now.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y);
-        _down.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y + _symbolHeight);
-        _twoDown.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y + _symbolHeight * 2);
-    }
-
-    public void StopView()
-    {
-        var reel = _slot.GetCurrentReel();
-
-        Set(_twoUp, reel.twoUp);
-        Set(_up, reel.up);
-        Set(_now, reel.now);
-        Set(_down, reel.down);
-        Set(_twoDown, reel.twoDpwn);
-        Set(_twoDownUp, reel.twoDpwn);
-
-        float y = _base.anchoredPosition.y;
 
         _twoDownUp.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y - _symbolHeight * 3);
         _twoUp.anchoredPosition = new Vector2(_now.anchoredPosition.x, _base.anchoredPosition.y + y - _symbolHeight * 2);

@@ -19,7 +19,6 @@ public class SlotGameController : MonoBehaviour
 
         _lottery[slot].Stop();
         _lastReel[slot] = _lottery[slot].GetSymbol();
-        _views[slot]?.StopView();
         _isStopped[slot] = true;
 
         if (_isStopped.All(x => x))
@@ -51,9 +50,8 @@ public class SlotGameController : MonoBehaviour
     {
         for (int i = 0; i < _lottery.Length; i++)
         {
-            if (_isStopped[i]) continue;
-
-            _lottery[i].Tick(Time.deltaTime);
+            if (!_isStopped[i])
+                _lottery[i].Tick(Time.deltaTime);
 
             if (_views[i] is not null)
                 _views[i].UpdateView();

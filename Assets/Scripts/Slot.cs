@@ -15,7 +15,11 @@ public class Slot
     public void Tick(float deltaTime)
     {
         _position += _speed * deltaTime;
+
+        if (_position >= _reel.Length)
+            _position -= _reel.Length;
     }
+
 
     public void Stop()
     {
@@ -31,7 +35,7 @@ public class Slot
     /// <summary>
     /// 表示用：上下＋現在＋補間量
     /// </summary>
-    public (int twoUp, int up, int now, int down, int twoDpwn, float offset) GetCurrentReel()
+    public (int twoUp, int up, int now, int down, int twoDown, float offset) GetCurrentReel()
     {
         int count = _reel.Length;
 
