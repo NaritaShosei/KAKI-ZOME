@@ -1,31 +1,62 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 [Serializable]
 public class Slot
 {
-    public void Init(float changeTime)
+    public float Position => _position;
+
+    public void Init(float speed)
     {
-        _changeTime = changeTime;
+        _speed = speed;
+        _position = 0f;
     }
+
+    public void Tick(float deltaTime)
+    {
+        _position += _speed * deltaTime;
+    }
+
+    public void Stop()
+    {
+        _position = Mathf.Ceil(_position);
+    }
+
     public int GetSymbol()
     {
-        return _reel[_currentIndex];
+        int index = Mathf.FloorToInt(_position) % _reel.Length;
+        return _reel[index];
     }
 
-    public void RotateReel(float deltaTime)
+    /// <summary>
+    /// 表示用：上下＋現在＋補間量
+    /// </summary>
+    public (int twoUp, int up, int now, int down, int twoDpwn, float offset) GetCurrentReel()
     {
-        _timer += deltaTime;
+        int count = _reel.Length;
 
-        if (_changeTime <= _timer)
-        {
-            _timer = 0;
-            _currentIndex = ++_currentIndex % _reel.Length;
-        }
+        int baseIndex = Mathf.FloorToInt(_position);
+
+        int now = baseIndex % count;
+        int down = (baseIndex + 1) % count;
+        int twoDown = (baseIndex + 2) % count;
+        int up = (baseIndex - 1 + count) % count;
+        int twoUp = (baseIndex - 2 + count) % count;
+
+        float offset = _position - baseIndex;
+
+        return (
+            _reel[twoUp],
+            _reel[up],
+            _reel[now],
+            _reel[down],
+            _reel[twoDown],
+            offset
+        );
     }
 
     [SerializeField] private int[] _reel;
-    private float _timer;
-    private float _changeTime;
-    private int _currentIndex;
+
+    private float _position;
+    private float _speed;
 }
