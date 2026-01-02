@@ -1,11 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ReelData", menuName = "Data")]
 public class ReelData : ScriptableObject
 {
-    public SpriteData[] Data => _data;
+    public Sprite GetSprite(int key)
+    {
+        if (_sprites == null)
+            BuildDictionary();
+
+        return _sprites[key];
+    }
+
     [SerializeField] private SpriteData[] _data;
+
+    private Dictionary<int, Sprite> _sprites;
+
+    private void BuildDictionary()
+    {
+        _sprites = new Dictionary<int, Sprite>();
+
+        foreach (var data in _data)
+        {
+            _sprites[data.Symbol] = data.Sprite;
+        }
+    }
 }
 
 [Serializable]

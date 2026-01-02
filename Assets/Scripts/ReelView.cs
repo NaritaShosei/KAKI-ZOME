@@ -51,6 +51,6 @@ public class ReelView : MonoBehaviour
 
     private Sprite GetSprite(int symbol)
     {
-        return _data.Data.Where(data => data.Symbol == symbol).FirstOrDefault().Sprite;
+        return _data.GetSprite(symbol);
     }
 }
