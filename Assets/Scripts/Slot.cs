@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class Slot
 {
-    public Slot(float changeTime)
+    public void Init(float changeTime)
     {
         _changeTime = changeTime;
     }
@@ -13,13 +13,13 @@ public class Slot
         return _reel[_currentIndex];
     }
 
-    public void rotateReel(float deltaTime)
+    public void RotateReel(float deltaTime)
     {
         _timer += deltaTime;
 
         if (_changeTime <= _timer)
         {
-            _changeTime = 0;
+            _timer = 0;
             _currentIndex = ++_currentIndex % _reel.Length;
         }
     }
