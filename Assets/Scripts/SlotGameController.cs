@@ -29,6 +29,7 @@ public class SlotGameController : MonoBehaviour
 
     [SerializeField] private Slot[] _lottery;
     [SerializeField] private ReelView[] _views;
+    [SerializeField] private ResultEffectController _resultEffects;
     [SerializeField] private float _speed = 5f;
 
     private int[] _lastReel;
@@ -44,6 +45,8 @@ public class SlotGameController : MonoBehaviour
             _lottery[i].Init(_speed);
             _views[i].Init(_lottery[i]);
         }
+
+        OnAllReelStopped += _resultEffects.PlayEffect;
     }
 
     private void Update()
@@ -56,5 +59,10 @@ public class SlotGameController : MonoBehaviour
             if (_views[i] is not null)
                 _views[i].UpdateView();
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnAllReelStopped -= _resultEffects.PlayEffect;
     }
 }

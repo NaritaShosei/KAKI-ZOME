@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 61418045}
   - component: {fileID: 61418044}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: StopButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 117431026}
   - component: {fileID: 117431025}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: ReelView3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 153190525}
   - component: {fileID: 153190524}
   m_Layer: 0
-  m_Name: GameObject (4)
+  m_Name: ReelView4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 257404703}
   - component: {fileID: 257404702}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1718,7 +1718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 558753440}
   m_Layer: 5
-  m_Name: Reel (1)
+  m_Name: Reel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1762,7 +1762,7 @@ GameObject:
   - component: {fileID: 585163042}
   - component: {fileID: 585163041}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StopButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2042,7 +2042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 688967320}
   m_Layer: 5
-  m_Name: Reel (2)
+  m_Name: Reel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,7 +2083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703316855}
   m_Layer: 5
-  m_Name: Base
+  m_Name: BasePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2121,7 +2121,7 @@ GameObject:
   - component: {fileID: 745362363}
   - component: {fileID: 745362362}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: StopButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3210,7 +3210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1380540336}
   m_Layer: 5
-  m_Name: Reel (3)
+  m_Name: Reel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3252,7 +3252,7 @@ GameObject:
   - component: {fileID: 1393859368}
   - component: {fileID: 1393859367}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: ReelView2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3304,8 +3304,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1496067728}
   - component: {fileID: 1496067727}
+  - component: {fileID: 1496067729}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3333,6 +3334,7 @@ MonoBehaviour:
   - {fileID: 1393859367}
   - {fileID: 117431025}
   - {fileID: 153190524}
+  _resultEffects: {fileID: 1496067729}
   _speed: 9.7
 --- !u!4 &1496067728
 Transform:
@@ -3349,6 +3351,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496067729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496067726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd9057078014b243b3720ac35dc902a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResultEffectController
+  _effects: []
 --- !u!1 &1569368457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,7 +4039,7 @@ GameObject:
   - component: {fileID: 1963173804}
   - component: {fileID: 1963173803}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: StopButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4155,7 +4170,7 @@ GameObject:
   - component: {fileID: 2074739114}
   - component: {fileID: 2074739113}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: ReelView1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4207,7 +4222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2097502348}
   m_Layer: 5
-  m_Name: Reel
+  m_Name: Reel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
