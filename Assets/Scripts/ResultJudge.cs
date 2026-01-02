@@ -1,35 +1,36 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public static class ResultJudge
 {
     public static SlotResult Judge(int[] symbols)
     {
         var groups = symbols
-            .GroupBy(x => x)
+            .Select((symbol, index) => new { symbol, index })
+            .GroupBy(x => x.symbol)
             .OrderByDescending(g => g.Count())
             .ToArray();
 
         var top = groups[0];
+        var indexes = top.Select(x => x.index).ToArray();
 
-        // 全揃い
-        if (top.Count() >= symbols.Length)
-            return new SlotResult(SlotResultType.AllSame, top.Key);
-        // 3揃い
+        if (top.Count() == symbols.Length)
+            return new SlotResult(SlotResultType.AllSame, top.Key, indexes, symbols);
+
         if (top.Count() == 3)
-            return new SlotResult(SlotResultType.ThreeSame, top.Key);
+            return new SlotResult(SlotResultType.ThreeSame, top.Key, indexes, symbols);
 
-        // 2揃い
         if (top.Count() == 2)
-            return new SlotResult(SlotResultType.TwoSame, top.Key);
+            return new SlotResult(SlotResultType.TwoSame, top.Key, indexes, symbols);
 
-        return new SlotResult(SlotResultType.AllDifferent, null);
+        return new SlotResult(SlotResultType.AllDifferent, -1, Array.Empty<int>(), symbols);
     }
 }
 
 
 public enum SlotResultType
 {
-    None,
     AllSame,
     TwoSame,
     ThreeSame,
@@ -39,11 +40,19 @@ public enum SlotResultType
 public readonly struct SlotResult
 {
     public readonly SlotResultType Type;
-    public readonly int? Symbol; // 揃った絵柄（なければ null）
+    public readonly int Symbol;              // 揃った絵柄
+    public readonly IReadOnlyList<int> Indexes; // 揃ったリール位置
+    public readonly IReadOnlyList<int> Symbols; // リール
 
-    public SlotResult(SlotResultType type, int? symbol)
+    public SlotResult(
+        SlotResultType type,
+        int symbol,
+        IReadOnlyList<int> indexes,
+        IReadOnlyList<int> symbols)
     {
         Type = type;
         Symbol = symbol;
+        Indexes = indexes;
+        Symbols = symbols;
     }
 }
