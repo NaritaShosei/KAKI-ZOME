@@ -1,22 +1,32 @@
 ﻿using System.Linq;
-using UnityEngine;
 
-public class ResultJudge
+public static class ResultJudge
 {
-    public SlotResultType Judge(int[] symbols)
+    public static SlotResult Judge(int[] symbols)
     {
-        if (symbols.All(x => x == symbols[0]))
-            return SlotResultType.AllSame;
+        var groups = symbols
+            .GroupBy(x => x)
+            .OrderByDescending(g => g.Count())
+            .ToArray();
 
-        if (symbols.GroupBy(x => x).Any(g => g.Count() >= 2))
-            return SlotResultType.TwoSame;
+        var top = groups[0];
 
-        if (symbols.GroupBy(x => x).Any(g => g.Count() >= 3))
-            return SlotResultType.ThreeSame;
+        // 全揃い
+        if (top.Count() >= symbols.Length)
+            return new SlotResult(SlotResultType.AllSame, top.Key);
+        // 3揃い
+        if (top.Count() == 3)
+            return new SlotResult(SlotResultType.ThreeSame, top.Key);
 
-        return SlotResultType.AllDifferent;
+        // 2揃い
+        if (top.Count() == 2)
+            return new SlotResult(SlotResultType.TwoSame, top.Key);
+
+        return new SlotResult(SlotResultType.AllDifferent, null);
     }
 }
+
+
 public enum SlotResultType
 {
     None,
@@ -24,4 +34,16 @@ public enum SlotResultType
     TwoSame,
     ThreeSame,
     AllDifferent
+}
+
+public readonly struct SlotResult
+{
+    public readonly SlotResultType Type;
+    public readonly int? Symbol; // 揃った絵柄（なければ null）
+
+    public SlotResult(SlotResultType type, int? symbol)
+    {
+        Type = type;
+        Symbol = symbol;
+    }
 }
