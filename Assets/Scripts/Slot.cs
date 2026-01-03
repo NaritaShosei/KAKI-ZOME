@@ -22,13 +22,11 @@ public class Slot
     {
         float beforePosition = _position;
         _position = Mathf.RoundToInt(_position);
-        Debug.Log($"Stop: before={beforePosition:F2}, after={_position:F2}, symbol={GetSymbol()}");
     }
 
     public int GetSymbol()
     {
         int index = Mathf.RoundToInt(_position) % _reel.Length;
-        Debug.Log($"GetSymbol: position={_position:F2}, index={index}, symbol={_reel[index]}");
         return _reel[index];
     }
 
