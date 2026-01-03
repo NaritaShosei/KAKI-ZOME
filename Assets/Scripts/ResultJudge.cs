@@ -42,17 +42,17 @@ public readonly struct SlotResult
     public readonly SlotResultType Type;
     public readonly int Symbol;              // 揃った絵柄
     public readonly IReadOnlyList<int> Indexes; // 揃ったリール位置
-    public readonly IReadOnlyList<int> Symbols; // リール
+    public readonly IReadOnlyList<int> Reel; // リール
 
     public SlotResult(
         SlotResultType type,
         int symbol,
         IReadOnlyList<int> indexes,
-        IReadOnlyList<int> symbols)
+        IReadOnlyList<int> reel)
     {
         Type = type;
         Symbol = symbol;
         Indexes = indexes;
-        Symbols = symbols;
+        Reel = reel;
     }
 }
