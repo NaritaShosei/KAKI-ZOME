@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdcfcadfadb26a46bf07159f597bb63, type: 3}
+  m_Name: ReelData 3
+  m_EditorClassIdentifier: Assembly-CSharp::ReelData
+  _data:
+  - _symbol: 1
+    _sprite: {fileID: 21300000, guid: 0f10eda5870a56441867b374a1617ec6, type: 3}
+  - _symbol: 2
+    _sprite: {fileID: 21300000, guid: c4b0805d53773b842b22c96e6fa0cb13, type: 3}
+  - _symbol: 3
+    _sprite: {fileID: 21300000, guid: 6a3321e1ea03c1e4682abf1f99e86279, type: 3}
+  - _symbol: 4
+    _sprite: {fileID: 21300000, guid: ad851de476321044290cdc2902300e05, type: 3}
+  - _symbol: 5
+    _sprite: {fileID: 21300000, guid: 26e150cb462492c458556af0b13adab8, type: 3}
