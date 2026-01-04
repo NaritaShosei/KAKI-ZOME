@@ -15,8 +15,7 @@ public class ResultEffectController : MonoBehaviour
     private void Show(SlotResult result)
     {
         var effect = _effects.FirstOrDefault(e =>
-            e.Reel.SequenceEqual(result.Reel) &&
-            e.ResultType == result.Type);
+            e.Reel.SequenceEqual(result.Reel));
 
         if (effect == null) return;
 
