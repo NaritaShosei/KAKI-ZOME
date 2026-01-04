@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotGameController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class SlotGameController : MonoBehaviour
         if (_isStopped.All(x => x))
         {
             OnAllReelStopped?.Invoke(_lastReel);
+            _button.interactable = true;
         }
     }
 
@@ -32,6 +34,7 @@ public class SlotGameController : MonoBehaviour
     [SerializeField] private ReelView[] _views;
     [SerializeField] private ResultEffectController _resultEffects;
     [SerializeField] private float _speed = 5f;
+    [SerializeField] private Button _button;
 
     private int[] _lastReel;
     private bool[] _isStopped;
@@ -45,6 +48,7 @@ public class SlotGameController : MonoBehaviour
         {
             _lottery[i].Init(_speed);
             _views[i].Init(_lottery[i]);
+            _isStopped[i] = true;
         }
 
         OnAllReelStopped += _resultEffects.PlayEffect;
