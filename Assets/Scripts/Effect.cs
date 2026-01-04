@@ -130,7 +130,11 @@ public class Effect : MonoBehaviour
                 new Vector3(0, _rotate, 0),
                 _rotateDuration
             ).SetEase(Ease.Linear)
-        );
+        )
+        .OnComplete(() =>
+        {
+            Destroy(gameObject);
+        });
     }
 
 }

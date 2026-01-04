@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectData
   _symbol: 01000000010000000100000001000000
   _resultType: 0
-  _effectPrefab: {fileID: 5715411626452107223, guid: 2b09f72bc0793ee49ad7eacf782dc3e9, type: 3}
+  _effectPrefab: {fileID: 3165753095291076730, guid: f6850faa99da9ac4c992b8226e9f2756, type: 3}
