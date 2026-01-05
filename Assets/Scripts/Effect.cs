@@ -1,6 +1,5 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Effect : MonoBehaviour
 {
@@ -25,12 +24,11 @@ public class Effect : MonoBehaviour
     [SerializeField] private float _rotateDuration2;
     [SerializeField] private Ease _ease2;
 
+    [SerializeField] private RectTransform _transform3;
     [SerializeField] private float _lastScale;
     [SerializeField] private float _lastDuration;
     [SerializeField] private float _rotate;
     [SerializeField] private float _rotateDuration;
-    [SerializeField] private float _posY1;
-    [SerializeField] private float _posY2;
     [SerializeField] private Ease _lastEase;
     [SerializeField] private AudioClip _lastClip;
     [SerializeField] private float _lastDelay;
@@ -38,12 +36,11 @@ public class Effect : MonoBehaviour
 
 
     [SerializeField] private bool _isPlaying;
-    private RectTransform _main;
+    [SerializeField] private RectTransform _main;
 
 
     private void Start()
     {
-        _main = (RectTransform)transform;
         if (_isPlaying)
             Play();
     }
@@ -66,7 +63,6 @@ public class Effect : MonoBehaviour
             _rotateY1,
             _rotateDuration1,
             _ease1,
-            _posY1,
             _audioClip1,
             _audioDelay
         );
@@ -79,7 +75,6 @@ public class Effect : MonoBehaviour
             _rotateY2,
             _rotateDuration2,
             _ease2,
-            _posY2,
             _audioClip1,
             _audioDelay
         );
@@ -95,7 +90,6 @@ public class Effect : MonoBehaviour
      float rotateY,
      float rotateDuration,
      Ease scaleEase,
-     float lastPos,
      AudioClip clip,
      float delay
  )
@@ -128,7 +122,6 @@ public class Effect : MonoBehaviour
         )
         .Append(
             target.DOScale(Vector3.zero, 0.1f)
-            .OnComplete(() => target.anchoredPosition = new Vector2(target.anchoredPosition.x, lastPos))
         );
     }
 
@@ -137,40 +130,30 @@ public class Effect : MonoBehaviour
         float insertTime = seq.Duration();
 
         seq.Append(
-            _transform1.DOScale(Vector3.one * _lastScale, _lastDuration)
-                .SetEase(_lastEase)
-        ).Join(
-            _transform2.DOScale(Vector3.one * _lastScale, _lastDuration)
+            _transform3.DOScale(Vector3.one * _lastScale, _lastDuration)
                 .SetEase(_lastEase)
         );
 
         seq.InsertCallback(insertTime + _lastDelay, () =>
         {
             _source.PlayOneShot(_lastClip);
-            DOTween.To(() => _source.pitch, x => _source.pitch = x, _pitch, _lastClip.length);
+            DOTween.To(
+                () => _source.pitch,
+                x => _source.pitch = x,
+                _pitch,
+                _lastClip.length
+            );
         });
 
         seq
         .Join(
-            _transform1.DORotate(
-                new Vector3(0, -_rotate, 0),
-                _rotateDuration
-            ).SetEase(Ease.Linear)
-        )
-         .Join(
-            _transform2.DORotate(
+            _transform3.DORotate(
                 new Vector3(0, -_rotate, 0),
                 _rotateDuration
             ).SetEase(Ease.Linear)
         )
         .Append(
-            _transform1.DORotate(
-                new Vector3(0, _rotate, 0),
-                _rotateDuration
-            ).SetEase(Ease.Linear)
-        )
-        .Join(
-            _transform2.DORotate(
+            _transform3.DORotate(
                 new Vector3(0, _rotate, 0),
                 _rotateDuration
             ).SetEase(Ease.Linear)

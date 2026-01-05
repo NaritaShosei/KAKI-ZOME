@@ -3583,6 +3583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResultEffectController
   _effects:
   - {fileID: 11400000, guid: ffae5e1f1d0550e4ca88126d8cacda5e, type: 2}
+  - {fileID: 11400000, guid: 46ed16e4a9dbe8446bb95d360e7a6b2c, type: 2}
 --- !u!1 &1280737695
 GameObject:
   m_ObjectHideFlags: 0
