@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 1593191709082120814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.09000001, y: 0.09000001, z: 0.09000001}
+  m_LocalScale: {x: -0.01, y: -0.01, z: -0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5853767606548290419}
@@ -126,7 +126,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _falloffCurveGamma: 2.2
   _fillMode: 0
-  _color: {r: 0.37626222, g: 0.043735042, b: 0.042311423, a: 1}
+  _color: {r: 1, g: 0.1641509, b: 0.1641509, a: 1}
   _gradientTexture: {fileID: 0}
   _gradient:
     serializedVersion: 2
@@ -193,7 +193,7 @@ RectTransform:
   m_GameObject: {fileID: 2701860986102867245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.09000001, y: 0.09000001, z: 0.09000001}
+  m_LocalScale: {x: -0.01, y: -0.01, z: -0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5853767606548290419}
@@ -291,7 +291,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _falloffCurveGamma: 2.2
   _fillMode: 0
-  _color: {r: 0.37626222, g: 0.043735042, b: 0.042311423, a: 1}
+  _color: {r: 1, g: 0.1641509, b: 0.1641509, a: 1}
   _gradientTexture: {fileID: 0}
   _gradient:
     serializedVersion: 2
@@ -372,15 +372,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195436002119825679, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1195436002119825679, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1195436002119825679, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1195436002119825679, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -430,6 +430,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3835314432292342094, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835314432292342094, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6df1f94bc3a7ef34283b0015afcfa3d5, type: 3}
+    - target: {fileID: 3835314432292342094, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7657469019745968646, guid: cd6781d2562f7084d8c2e519002566f7, type: 3}
       propertyPath: m_Name
       value: EffectAkeome
@@ -469,13 +481,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Effect
   _source: {fileID: 8497971320885186421}
+  _mainScale: 1
+  _mainDuration: 0.6
   _transform1: {fileID: 4903064909330695333}
   _scale1: 4
   _scaleDuration1: 1.2
   _rotateY1: 48.1
   _rotateDuration1: 1.54
   _ease1: 30
-  _audioClip1: {fileID: 8300000, guid: bb3223dca9d4009449207dd32f66ccd1, type: 3}
+  _audioClip1: {fileID: 8300000, guid: 713688cffee319f4a8035306874cca38, type: 3}
   _audioDelay: 0.41
   _transform2: {fileID: 4953454880072704823}
   _scale2: 4
@@ -490,6 +504,10 @@ MonoBehaviour:
   _posY1: 235
   _posY2: -174
   _lastEase: 30
+  _lastClip: {fileID: 8300000, guid: 971b40b7eef4a4642b0ca84583e951c6, type: 3}
+  _lastDelay: 0.4
+  _pitch: 1.5
+  _isPlaying: 0
 --- !u!82 &8497971320885186421
 AudioSource:
   m_ObjectHideFlags: 0
@@ -504,7 +522,7 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: bb3223dca9d4009449207dd32f66ccd1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1.14
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0

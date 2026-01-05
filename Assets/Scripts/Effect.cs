@@ -6,6 +6,9 @@ public class Effect : MonoBehaviour
 {
     [SerializeField] private AudioSource _source;
 
+    [SerializeField] private float _mainScale;
+    [SerializeField] private float _mainDuration;
+
     [SerializeField] private RectTransform _transform1;
     [SerializeField] private float _scale1;
     [SerializeField] private float _scaleDuration1;
@@ -33,14 +36,27 @@ public class Effect : MonoBehaviour
     [SerializeField] private float _lastDelay;
     [SerializeField] private float _pitch;
 
+
+    [SerializeField] private bool _isPlaying;
+    private RectTransform _main;
+
+
     private void Start()
     {
-        Play();
+        _main = (RectTransform)transform;
+        if (_isPlaying)
+            Play();
     }
 
+    [ContextMenu("Play")]
     private void Play()
     {
         var seq = DOTween.Sequence();
+
+        seq.Append(
+            _main.DOScale(Vector2.one * _mainScale, _mainDuration).
+            SetEase(Ease.OutBounce)
+            );
 
         AppendEffect(
             seq,
