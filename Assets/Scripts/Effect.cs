@@ -4,12 +4,16 @@ using UnityEngine.UIElements;
 
 public class Effect : MonoBehaviour
 {
+    [SerializeField] private AudioSource _source;
+
     [SerializeField] private RectTransform _transform1;
     [SerializeField] private float _scale1;
     [SerializeField] private float _scaleDuration1;
     [SerializeField] private float _rotateY1;
     [SerializeField] private float _rotateDuration1;
     [SerializeField] private Ease _ease1;
+    [SerializeField] private AudioClip _audioClip1;
+    [SerializeField] private float _audioDelay;
 
     [SerializeField] private RectTransform _transform2;
     [SerializeField] private float _scale2;
@@ -25,6 +29,9 @@ public class Effect : MonoBehaviour
     [SerializeField] private float _posY1;
     [SerializeField] private float _posY2;
     [SerializeField] private Ease _lastEase;
+    [SerializeField] private AudioClip _lastClip;
+    [SerializeField] private float _lastDelay;
+    [SerializeField] private float _pitch;
 
     private void Start()
     {
@@ -43,7 +50,9 @@ public class Effect : MonoBehaviour
             _rotateY1,
             _rotateDuration1,
             _ease1,
-            _posY1
+            _posY1,
+            _audioClip1,
+            _audioDelay
         );
 
         AppendEffect(
@@ -54,28 +63,40 @@ public class Effect : MonoBehaviour
             _rotateY2,
             _rotateDuration2,
             _ease2,
-            _posY2
+            _posY2,
+            _audioClip1,
+            _audioDelay
         );
 
         AppendLastEffect(seq);
     }
 
     private void AppendEffect(
-        Sequence seq,
-        RectTransform target,
-        float scale,
-        float scaleDuration,
-        float rotateY,
-        float rotateDuration,
-        Ease scaleEase,
-        float lastPos
-    )
+     Sequence seq,
+     RectTransform target,
+     float scale,
+     float scaleDuration,
+     float rotateY,
+     float rotateDuration,
+     Ease scaleEase,
+     float lastPos,
+     AudioClip clip,
+     float delay
+ )
     {
+        float insertTime = seq.Duration();
+
         seq.Append(
             target.DOScale(Vector3.one * scale, scaleDuration)
                   .SetEase(scaleEase)
-        )
-        .Join(
+        );
+
+        seq.InsertCallback(insertTime + delay, () =>
+        {
+            _source.PlayOneShot(clip);
+        });
+
+        seq.Join(
             target.DORotate(
                 new Vector3(0, -rotateY, 0),
                 rotateDuration
@@ -90,23 +111,30 @@ public class Effect : MonoBehaviour
             .SetEase(Ease.Linear)
         )
         .Append(
-                target.DOScale(Vector3.zero, 0.1f)
-            .OnComplete(() => target.anchoredPosition = new Vector2(target.anchoredPosition.x, lastPos)
-            )
+            target.DOScale(Vector3.zero, 0.1f)
+            .OnComplete(() => target.anchoredPosition = new Vector2(target.anchoredPosition.x, lastPos))
         );
     }
 
     private void AppendLastEffect(Sequence seq)
     {
+        float insertTime = seq.Duration();
 
         seq.Append(
             _transform1.DOScale(Vector3.one * _lastScale, _lastDuration)
                 .SetEase(_lastEase)
-        )
-        .Join(
+        ).Join(
             _transform2.DOScale(Vector3.one * _lastScale, _lastDuration)
                 .SetEase(_lastEase)
-        )
+        );
+
+        seq.InsertCallback(insertTime + _lastDelay, () =>
+        {
+            _source.PlayOneShot(_lastClip);
+            DOTween.To(() => _source.pitch, x => _source.pitch = x, _pitch, _lastClip.length);
+        });
+
+        seq
         .Join(
             _transform1.DORotate(
                 new Vector3(0, -_rotate, 0),
