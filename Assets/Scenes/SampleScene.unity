@@ -3586,6 +3586,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 46ed16e4a9dbe8446bb95d360e7a6b2c, type: 2}
   - {fileID: 11400000, guid: 40bdda004cc93fb4dbe6dd59611c9a5d, type: 2}
   - {fileID: 11400000, guid: ff4f58c451fbbdb46a10762be816d534, type: 2}
+  - {fileID: 11400000, guid: 61ca5c476679dbf43bc7956c6f669a03, type: 2}
 --- !u!1 &1280737695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,7 +4064,7 @@ MonoBehaviour:
   - {fileID: 117431025}
   - {fileID: 153190524}
   _resultEffects: {fileID: 1256568318}
-  _speed: 1.27
+  _speed: 3.98
   _button: {fileID: 257404702}
 --- !u!4 &1496067728
 Transform:
