@@ -18,8 +18,8 @@ MonoBehaviour:
   - _symbol: 2
     _sprite: {fileID: 21300000, guid: 907f770a71ad6fa4dbd64c578a3808c4, type: 3}
   - _symbol: 3
-    _sprite: {fileID: 21300000, guid: 89d7d0ffd4a64ac4bafaca5533527aa0, type: 3}
+    _sprite: {fileID: 21300000, guid: 4e426a77389743e4d833554edb052057, type: 3}
   - _symbol: 4
-    _sprite: {fileID: 21300000, guid: 89d7d0ffd4a64ac4bafaca5533527aa0, type: 3}
+    _sprite: {fileID: 21300000, guid: b36849bbac11f31409ebb38d7b2d0e1f, type: 3}
   - _symbol: 5
-    _sprite: {fileID: 21300000, guid: 9511abb70481e8748bb7543c7662fb19, type: 3}
+    _sprite: {fileID: 21300000, guid: 8494cc9bf57a5924da0d516bc5a6606a, type: 3}
